@@ -79,7 +79,7 @@ function Hero() {
     return (
         <section
             ref={containerRef}
-            className="relative min-h-[100vh] flex items-center overflow-hidden pt-32 pb-12 group bg-slate-900"
+            className="relative min-h-[100vh] flex items-center overflow-hidden pt-24 pb-12 group bg-slate-900"
         >
             {/* Background Image Carousel Layer */}
             <div className="absolute inset-0 z-0">

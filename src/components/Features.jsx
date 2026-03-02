@@ -15,11 +15,11 @@ import feat4 from "../assets/feat4.png";
 import feat5 from "../assets/feat5.png";
 
 const imageMap = {
-    "/src/assets/feat1.png": feat1,
-    "/src/assets/feat2.png": feat2,
-    "/src/assets/feat3.png": feat3,
-    "/src/assets/feat4.png": feat4,
-    "/src/assets/feat5.png": feat5,
+    1: feat1,
+    2: feat2,
+    3: feat3,
+    4: feat4,
+    5: feat5,
 };
 
 function Features() {
@@ -169,7 +169,7 @@ function Features() {
                     <div className={styles['feat-stacked-cards']}>
                         {features.map((feature, index) => {
                             // Resolve image path
-                            const bgImage = imageMap[feature.image] || feature.image;
+                            const bgImage = imageMap[feature.id] || feature.image;
 
                             return (
                                 <div className={styles['feat-card']} key={index}>

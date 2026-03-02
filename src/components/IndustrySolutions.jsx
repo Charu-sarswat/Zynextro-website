@@ -8,13 +8,13 @@ import realestateImg from "../assets/image copy 2.png";
 import saasImg from "../assets/image copy 3.png";
 import professionalImg from "../assets/image copy 4.png";
 
-// Map images
+// Map images using IDs instead of paths for better reliability
 const imageMap = {
-  "/src/assets/image.png": ecommerceImg,
-  "/src/assets/image copy .png": b2bImg,
-  "/src/assets/image copy 2.png": realestateImg,
-  "/src/assets/image copy 3.png": saasImg,
-  "/src/assets/image copy 4.png": professionalImg,
+  "ecommerce": ecommerceImg,
+  "b2b": b2bImg,
+  "realestate": realestateImg,
+  "saas": saasImg,
+  "professional": professionalImg,
 };
 
 function IndustrySolutions() {
@@ -221,7 +221,7 @@ function IndustrySolutions() {
           {/* Background Image Container */}
           <div className="relative h-[500px] sm:h-[550px] md:h-[600px] w-full">
             <img
-              src={imageMap[activeSolution.image] || activeSolution.image}
+              src={imageMap[activeSolution.id] || activeSolution.image}
               alt={activeSolution.name}
               className="h-full w-full object-cover"
             />

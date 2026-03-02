@@ -100,7 +100,7 @@ function Contact() {
     return (
         <div className="bg-gradient-to-b from-white to-slate-50">
             {/* Hero Section */}
-            <section className="pt-28 sm:pt-32 pb-0">
+            <section className="pt-20 sm:pt-24 pb-0">
                 <div className="mx-auto max-w-[1400px] px-4 sm:px-6">
                     <div className="text-center">
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900">
