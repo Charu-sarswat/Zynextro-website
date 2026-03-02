@@ -201,28 +201,28 @@ function IndustrySolutions() {
         </div>
 
         {/* Content Card with Image and Overlay */}
-        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl">
-          {/* Background Image */}
-          <div className="relative h-[400px] sm:h-[500px] md:h-[600px] w-full">
+        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl">
+          {/* Background Image Container */}
+          <div className="relative h-[500px] sm:h-[550px] md:h-[600px] w-full">
             <img
               src={activeSolution.image}
               alt={activeSolution.name}
               className="h-full w-full object-cover"
             />
-            {/* Overlay Box */}
-            <div className="absolute left-0 top-0 h-full w-full md:w-[55%] lg:w-[50%]">
-              <div className="flex h-full items-center p-4 sm:p-6 md:p-8 lg:p-12">
-                <div className="rounded-xl sm:rounded-2xl bg-white p-4 sm:p-6 md:p-8 shadow-2xl">
-                  <h3 className="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-slate-900">
+            {/* Overlay Box - Content z-index 10 for visibility */}
+            <div className="absolute inset-x-0 bottom-0 md:top-0 md:bottom-auto md:left-0 md:h-full md:w-[55%] lg:w-[50%] z-10">
+              <div className="flex h-full items-end md:items-center p-4 sm:p-6 md:p-8 lg:p-12">
+                <div className="rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md p-5 sm:p-6 md:p-8 shadow-2xl relative">
+                  <h3 className="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-slate-900 leading-tight">
                     {activeSolution.headline}{" "}
                     <span className="text-[#4f46e5]">
                       {activeSolution.highlightedWord}
                     </span>
                   </h3>
-                  <p className="mb-6 sm:mb-8 text-sm sm:text-base text-slate-600 lg:text-lg">
+                  <p className="mb-6 sm:mb-8 text-sm sm:text-base text-slate-600 lg:text-lg leading-relaxed">
                     {activeSolution.description}
                   </p>
-                  <button className="rounded-lg bg-[#6366f1] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#818cf8] sm:px-6 sm:py-3 sm:text-base">
+                  <button className="rounded-lg bg-[#6366f1] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#818cf8] hover:shadow-lg hover:-translate-y-0.5 sm:px-6 sm:py-3 sm:text-base">
                     <span className="hidden sm:inline">See Solutions →</span>
                     <span className="sm:hidden">See Solutions</span>
                   </button>
