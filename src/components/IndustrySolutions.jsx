@@ -1,6 +1,22 @@
 import { useState, useEffect } from "react";
 import industrySolutions from "../data/industrySolutions.json";
 
+// Import images to ensure they are bundled by Vite
+import ecommerceImg from "../assets/image.png";
+import b2bImg from "../assets/image copy .png";
+import realestateImg from "../assets/image copy 2.png";
+import saasImg from "../assets/image copy 3.png";
+import professionalImg from "../assets/image copy 4.png";
+
+// Map images
+const imageMap = {
+  "/src/assets/image.png": ecommerceImg,
+  "/src/assets/image copy .png": b2bImg,
+  "/src/assets/image copy 2.png": realestateImg,
+  "/src/assets/image copy 3.png": saasImg,
+  "/src/assets/image copy 4.png": professionalImg,
+};
+
 function IndustrySolutions() {
   const [activeTab, setActiveTab] = useState("ecommerce");
   const activeSolution = industrySolutions.find((sol) => sol.id === activeTab);
@@ -205,7 +221,7 @@ function IndustrySolutions() {
           {/* Background Image Container */}
           <div className="relative h-[500px] sm:h-[550px] md:h-[600px] w-full">
             <img
-              src={activeSolution.image}
+              src={imageMap[activeSolution.image] || activeSolution.image}
               alt={activeSolution.name}
               className="h-full w-full object-cover"
             />

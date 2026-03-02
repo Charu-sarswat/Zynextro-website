@@ -3,6 +3,22 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import features from "../data/features.json";
 
+// Import images to ensure they are bundled by Vite
+import feat1 from "../assets/feat1.png";
+import feat2 from "../assets/feat2.png";
+import feat3 from "../assets/feat3.png";
+import feat4 from "../assets/feat4.png";
+import feat5 from "../assets/feat5.png";
+
+// Map images
+const imageMap = {
+  "/src/assets/feat1.png": feat1,
+  "/src/assets/feat2.png": feat2,
+  "/src/assets/feat3.png": feat3,
+  "/src/assets/feat4.png": feat4,
+  "/src/assets/feat5.png": feat5,
+};
+
 gsap.registerPlugin(ScrollTrigger);
 
 const colorThemes = {
@@ -42,12 +58,12 @@ function FeatureSection() {
     // Calculate consistent spacing between card transitions
     const transitionDuration = 1.2; // Duration for each card transition
     const spacing = 1.0; // Spacing between transitions (in timeline units)
-    
+
     // Use actual container height for scroll distance calculation
     const container = cardsContainerRef.current?.querySelector('.relative');
     const cardHeight = container?.offsetHeight || window.innerHeight * 0.75;
     const scrollDistance = cardHeight * (numCards - 0.5); // Smoother scroll distance
-    
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -61,7 +77,7 @@ function FeatureSection() {
           const progress = self.progress;
           const totalDuration = (numCards - 1) * spacing;
           const timelinePos = progress * totalDuration;
-          
+
           // Determine active card based on timeline position
           let newIndex = 0;
           for (let i = 0; i < numCards; i++) {
@@ -70,7 +86,7 @@ function FeatureSection() {
             }
           }
           setActiveSection(newIndex);
-          
+
           // Update z-index dynamically for proper layering
           cards.forEach((card, idx) => {
             if (idx === newIndex) {
@@ -89,17 +105,17 @@ function FeatureSection() {
     cards.forEach((card, index) => {
       if (index === 0) {
         // First card starts visible at center
-        gsap.set(card, { 
-          y: 0, 
-          opacity: 1, 
+        gsap.set(card, {
+          y: 0,
+          opacity: 1,
           scale: 0.98,
           zIndex: numCards + 10
         });
       } else {
         // Other cards start off-screen below
-        gsap.set(card, { 
-          y: 600, 
-          opacity: 0, 
+        gsap.set(card, {
+          y: 600,
+          opacity: 0,
           scale: 0.95,
           zIndex: index
         });
@@ -130,7 +146,7 @@ function FeatureSection() {
           const stackY = -stackLevel * 40; // Tighter stacking (40px instead of 60px)
           const stackScale = 1.02; // Stacked cards slightly larger for depth
           const stackOpacity = Math.max(0.75, 1 - stackLevel * 0.08);
-          
+
           tl.to(
             cards[i],
             {
@@ -155,18 +171,18 @@ function FeatureSection() {
 
   // Mobile: Simple stacked layout
   if (isMobile) {
-  return (
+    return (
       <section className="bg-linear-to-b from-white to-slate-50 py-8 sm:py-12 md:py-16">
         <div className="mx-auto max-w-[1400px] px-4 sm:px-6">
           <div className="space-y-8 sm:space-y-10 md:space-y-12">
-          {features.map((feature) => (
-            <FeatureCard key={feature.id} feature={feature} />
-          ))}
+            {features.map((feature) => (
+              <FeatureCard key={feature.id} feature={feature} />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
+    );
+  }
 
   // Desktop: Scroll-jacked sticky animation
   return (
@@ -183,11 +199,11 @@ function FeatureSection() {
               <article
                 key={feature.id}
                 className="feature-card absolute top-12 left-0 w-full h-full bg-white rounded-2xl px-8 pt-8 pb-10 border border-slate-200 flex flex-col"
-                style={{ 
+                style={{
                   zIndex: index,
                   transformOrigin: 'top center',
-                  boxShadow: index === activeSection 
-                    ? '0 20px 60px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.08)' 
+                  boxShadow: index === activeSection
+                    ? '0 20px 60px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.08)'
                     : '0 8px 30px rgba(0, 0, 0, 0.06), 0 2px 10px rgba(0, 0, 0, 0.04)',
                   transition: 'box-shadow 0.4s ease',
                   willChange: 'transform, opacity',
@@ -264,9 +280,8 @@ function SubFeatureCard({ item }) {
         <img
           src={item.image}
           alt={item.title}
-          className={`h-full w-full object-cover transition-all duration-300 ${
-            imageLoaded ? "opacity-100" : "opacity-0"
-          } ${!isActive ? "group-hover:scale-110" : ""}`}
+          className={`h-full w-full object-cover transition-all duration-300 ${imageLoaded ? "opacity-100" : "opacity-0"
+            } ${!isActive ? "group-hover:scale-110" : ""}`}
           onLoad={() => setImageLoaded(true)}
           onError={() => setImageError(true)}
           loading="lazy"
@@ -275,9 +290,8 @@ function SubFeatureCard({ item }) {
 
       {/* Text Content - Appears on hover/click */}
       <div
-        className={`absolute bottom-0 left-0 right-0 bg-white p-3 sm:p-4 md:p-5 transform transition-all duration-500 ease-in-out border-t border-slate-200 ${
-          isActive ? "translate-y-0" : "translate-y-full group-hover:translate-y-0"
-        }`}
+        className={`absolute bottom-0 left-0 right-0 bg-white p-3 sm:p-4 md:p-5 transform transition-all duration-500 ease-in-out border-t border-slate-200 ${isActive ? "translate-y-0" : "translate-y-full group-hover:translate-y-0"
+          }`}
       >
         <h4 className="text-sm sm:text-base font-bold text-slate-900 mb-1 sm:mb-2">
           {item.title}

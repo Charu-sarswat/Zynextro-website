@@ -8,18 +8,18 @@ import features from "../data/features.json";
 gsap.registerPlugin(ScrollTrigger);
 
 // Import images 
-import heroLead from "../assets/heroLead.png";
-import heroPipeline from "../assets/heroPipeline.png";
-import heroDocs from "../assets/heroDocs.png";
-import heroDash from "../assets/heroDash.png";
-import heroClients from "../assets/heroClients.png";
+import feat1 from "../assets/feat1.png";
+import feat2 from "../assets/feat2.png";
+import feat3 from "../assets/feat3.png";
+import feat4 from "../assets/feat4.png";
+import feat5 from "../assets/feat5.png";
 
 const imageMap = {
-    "../assets/heroLead.png": heroLead,
-    "../assets/heroPipeline.png": heroPipeline,
-    "../assets/heroDocs.png": heroDocs,
-    "../assets/heroDash.png": heroDash,
-    "../assets/heroClients.png": heroClients,
+    "/src/assets/feat1.png": feat1,
+    "/src/assets/feat2.png": feat2,
+    "/src/assets/feat3.png": feat3,
+    "/src/assets/feat4.png": feat4,
+    "/src/assets/feat5.png": feat5,
 };
 
 function Features() {
